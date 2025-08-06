@@ -1,1 +1,15 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.active hr.bg-primary {
+    @apply block;
+  background-color: #5f6FFF;
+  border: none;
+  outline: none;
+  width: 60%;
+height: 0.5;
+    
+}
