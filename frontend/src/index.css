@@ -16,3 +16,7 @@ height: 0.5;
 .bg-primary{
     @apply bg-[#5f6FFF];
 }
+
+::-webkit-scrollbar {
+  @apply hidden;
+}
