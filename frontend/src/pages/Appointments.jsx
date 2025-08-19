@@ -28,9 +28,14 @@ const Appointments = () => {
         </div>
         <div>
           <p>{docInfo?.name} <img src={assets.verified_icon} alt="" /></p>
-          <p>{docInfo?.speciality}</p>
-          <p>{docInfo?.experience}</p>
-          <p>{docInfo?.fees}</p>
+          
+          <p>{docInfo?.degree} - {docInfo?.speciality}</p>
+          <button>{docInfo?.experience}</button>
+          <div>
+            <p>About <img src={assets.info_icon} alt="" /></p>
+          <p>{docInfo?.about}</p>
+          
+          </div>
         </div>
       </div>
 
