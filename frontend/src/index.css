@@ -24,3 +24,10 @@ height: 0.5;
 ::-webkit-scrollbar {
   @apply hidden;
 }
+
+@media (max-width: 740px){
+  .active p{
+    @apply text-white;
+    background-color: #5f6FFF;
+  }
+}
