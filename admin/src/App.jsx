@@ -1,9 +1,10 @@
 import React from 'react'
+import Login from './pages/login'
 
 const App = () => {
   return (
     <div>
-      <h1 className='text-3xl font-medium'>Admin Dashboard</h1>
+      <Login />
     </div>
   )
 }
