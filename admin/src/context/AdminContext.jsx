@@ -1,10 +1,13 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const AdminContext = createContext()
 
 const AdminContextProvider = (props) => {
-    const value = {
 
+    const [aToken, setAToken] = useState('')
+
+    const value = {
+        aToken, setAToken
     }
 
     return(
