@@ -10,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const { setAtoken, backendUrl } = useContext(AdminContext)
+  const { setAToken, backendUrl } = useContext(AdminContext)
 
   const onSubmitHandler = async (event) => {
     event.preventDefault()
@@ -22,7 +22,7 @@ const Login = () => {
         const {data} = await axios.post(backendUrl + '/api/admin/login', { email, password })
         if (data.success) {
           localStorage.setItem('aToken', data.token)
-          setAtoken(data.token)
+          setAToken(data.token)
           console.log("Admin login successful")
 
         }
@@ -32,10 +32,7 @@ const Login = () => {
       }
       
     } catch (error) {
-          console.log('Full error:', error);
-  console.log('Error response:', error.response?.data);
-  console.log('Request URL:', backendUrl + '/api/admin/login');
-  alert("Login failed: " + (error.response?.data?.message || error.message));
+          
     }
   }
 
