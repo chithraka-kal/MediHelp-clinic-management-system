@@ -19,22 +19,20 @@ const Login = () => {
 
       if (state === 'Admin') {
 
-        const {data} = await axios.post(backendUrl + 'api/admin/login', { email, password })
+        const {data} = await axios.post(backendUrl + '/api/admin/login', { email, password })
         if (data.success) {
-
-          console.log("data.token")
-          // localStorage.setItem('aToken', data.token)
-          // setAtoken(data.token)
+          localStorage.setItem('aToken', data.token)
+          setAtoken(data.token)
           
           
         }
         
       }else{
-
+        console.log("Doctor login")
       }
       
     } catch (error) {
-      
+        
     }
   }
 
@@ -44,7 +42,7 @@ const Login = () => {
         <p className='text-2xl font-semibold m-auto' ><span className='text-blue-500'>{state} </span> Login</p>
         <div className='w-full'>
           <p>Email</p>
-          <input onChange={(e) => setEmail(e.target.value)} value={email} className='border border-[#DADADA] p-2 rounded-md w-full mt-1' type="email" required />
+          <input value={email} onChange={(e) => setEmail(e.target.value)} className='border border-[#DADADA] p-2 rounded-md w-full mt-1' type="email" required />
         </div>
         <div className='w-full'>
           <p>Password</p>
