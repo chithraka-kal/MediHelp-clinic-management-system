@@ -23,8 +23,8 @@ const Login = () => {
         if (data.success) {
           localStorage.setItem('aToken', data.token)
           setAtoken(data.token)
-          
-          
+          console.log("Admin login successful")
+
         }
         
       }else{
@@ -32,7 +32,10 @@ const Login = () => {
       }
       
     } catch (error) {
-        
+          console.log('Full error:', error);
+  console.log('Error response:', error.response?.data);
+  console.log('Request URL:', backendUrl + '/api/admin/login');
+  alert("Login failed: " + (error.response?.data?.message || error.message));
     }
   }
 
