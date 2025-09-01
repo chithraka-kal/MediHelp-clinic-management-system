@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useContext } from 'react';
@@ -14,6 +14,12 @@ const Navbar = () => {
     setToken(false)
     localStorage.removeItem('token')
   }
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/');
+    }
+  }, [token]);
 
 
   return (
