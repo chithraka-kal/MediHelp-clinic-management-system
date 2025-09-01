@@ -13,7 +13,7 @@ const registerUser = async (req, res) => {
             return res.json({ success: false, message: "Please fill in all fields" });
         }
 
-        //validating emai format
+        //validating email format
         if (!validator.isEmail(email)) {
            return res.json({ success: false, message: "Please provide a valid email address" });
         }
@@ -30,7 +30,7 @@ const registerUser = async (req, res) => {
         const userData = {
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
         }
 
         const newUser = new userModel(userData)
@@ -68,4 +68,17 @@ const loginUser = async (req, res) => {
     }
 }
 
-export {registerUser, loginUser}
+//API to get user profile data
+const getProfile = async (req, res) => {
+    try {
+        const userId = req.userId
+        const userData = await userModel.findById(userId).select("-password")
+
+        res.json({ success: true, userData })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+export {registerUser, loginUser, getProfile}
