@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 
 const MyAppointments = () => {
 
-  const {backendUrl, token} = useContext(AppContext)
+  const {backendUrl, token, getDoctorsData} = useContext(AppContext)
 
   const [appointments, setAppointments] = useState([])
 
@@ -37,7 +37,8 @@ const MyAppointments = () => {
       const {data} = await axios.post(backendUrl + '/api/user/cancel-appointment', {appointmentId}, {headers: {token}})
       if (data.success) {
         toast.success(data.message)
-        getUserAppointments()
+        getUserAppointments() // Refresh user's appointments
+        getDoctorsData() // Refresh doctors data to update available slots
       }else{
         toast.error(data.message)
       }
@@ -52,7 +53,7 @@ const MyAppointments = () => {
     if (token) {
       getUserAppointments()
     }
-  }, [])
+  }, [token])
 
   return (
     <div>
@@ -65,8 +66,8 @@ const MyAppointments = () => {
               <p className='text-natural-800 font-semibold'>{item.docData.name}</p>
               <p>{item.docData.speciality}</p>
               <p className='text-natural-700 font-medium mt-1'>Address:</p>
-              <p className='text-xs'>{item.docData.address.line1}</p>
-              <p className='text-xs'>{item.docData.address.line2}</p>
+              <p className='text-xs'>{item.docData.address?.line1}</p>
+              <p className='text-xs'>{item.docData.address?.line2}</p>
               <p className='text-xs mt-1'><span className='text-sm text-natural-700 font-medium'>Date & Time:</span> {slotDateFormat(item.slotDate)} | {item.slotTime}</p>
             </div>
             <div></div>
