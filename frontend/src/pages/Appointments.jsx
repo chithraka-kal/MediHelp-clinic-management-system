@@ -54,12 +54,25 @@ const Appointments = () => {
       while (currentDate < endTime) {
         let formattedTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-        //add slot to the array
+        let day = currentDate.getDate()
+        let month = currentDate.getMonth() + 1
+        let year = currentDate.getFullYear()
+
+        const slotDate = day + "_" + month + "_" + year
+        const slotTime = formattedTime
+
+        const isSlotAvailable = docInfo.slots_booked[slotDate] && docInfo.slots_booked[slotDate].includes(slotTime) ? false : true
+
+        if (isSlotAvailable) {
+                  //add slot to the array
         timeSlots.push({
           datetime: new Date(currentDate),
           time: formattedTime,
           
         });
+        }
+
+
 
         //increment by 30 minutes
         currentDate.setMinutes(currentDate.getMinutes() + 30);
@@ -122,7 +135,7 @@ const Appointments = () => {
              <img className='w-5' src={assets.verified_icon} alt="" /></p>
           <div className='flex items-center gap-2 text-sm text-gray-600 mt-1'>
           <p>{docInfo?.degree} - {docInfo?.speciality}</p>
-          <button className='py-0.5 px-2 border text-xs border-gray-400 rounded-full'>{docInfo?.experience}</button>
+          <button className='py-0.5 px-2 border text-xs border-gray-400 rounded-full'>{docInfo?.experience} years</button>
           </div>
           <div>
             <p className='flex items-center gap-1 text-sm font-medium text-gray-900 mt-3'>
