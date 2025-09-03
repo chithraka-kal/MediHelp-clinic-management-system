@@ -3,11 +3,12 @@ import { useContext } from 'react'
 import { AdminContext } from '../../context/AdminContext'
 import { useEffect } from 'react'
 import { AppContext } from '../../context/AppContext'
+import { assets } from '../../assets/assets'
 
 const AllAppointments = () => {
 
   const {aToken, appointments, getAllAppointments} = useContext(AdminContext)
-  const {calculateAge} = useContext(AppContext)
+  const {calculateAge, slotDateFormat} = useContext(AppContext)
 
   useEffect(() => {
     if (aToken) {
@@ -34,8 +35,20 @@ const AllAppointments = () => {
               <div className='flex item-center gap-2'>
                 <img className='w-8 rounded-full' src={item.userData.image} alt="" /><p>{item.userData.name}</p>
               </div>
-              <p>{calculateAge(item.userData.dob)}</p>
+              <p className='max-sm:hidden'>{calculateAge(item.userData.dob)}</p>
+              <p>{slotDateFormat(item.slotDate)}, {item.slotTime}</p>
+            <div className='flex item-center gap-2'>
+                <img className='w-8 rounded-full bg-gray-200' src={item.docData.image} alt="" /><p>{item.docData.name}</p>
+              </div>
+              <p>${item.docData.fees}</p>
+              {
+                item.cancelled
+                ? <p className='text-red-400 text-xs font-medium'>Cancelled</p>
+                :<img className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
+
+              }
             </div>
+            
           ))
         }
       </div>
