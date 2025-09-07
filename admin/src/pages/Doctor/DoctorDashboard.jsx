@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import { DoctorContext } from '../../context/DoctorContext'
 import { useEffect } from 'react'
-import assets from '../../assets/assets'
+import {assets} from '../../assets/assets'
 
 const DoctorDashboard = () => {
   const { dToken,dashData, setDashData, getDashData} = useContext(DoctorContext)
