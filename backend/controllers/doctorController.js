@@ -107,8 +107,8 @@ const doctorDashboard = async (req, res) => {
         let earnings = 0
         
         appointments.map((item) => {
-            if (item.isCompleted || !item.cancelled) {
-                earnings += item.fee
+            if (item.isCompleted && !item.cancelled) {
+                earnings === item.fee
             }
         })
         let patients = []
@@ -125,7 +125,7 @@ const doctorDashboard = async (req, res) => {
             latestAppointments: appointments.slice(0,5).reverse() 
         }
 
-        res
+        res.json({ success: true, dashData })
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: error.message });
