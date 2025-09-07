@@ -12,7 +12,7 @@ const Navbar = () => {
     const navigate = useNavigate()
 
     const logout = () =>{
-        {aToken ? navigate('/admin-dashboard') : navigate('/doctor-dashboard')}
+        navigate('/')
         aToken && setAToken("")
         aToken && localStorage.removeItem('aToken')
         dToken && setDToken("")
