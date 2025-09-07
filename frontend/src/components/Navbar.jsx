@@ -42,9 +42,11 @@ const Navbar = () => {
             <li className='py-1'>Contact</li>
             <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
         </NavLink>
-        <NavLink to="/contact">
-            <button className='py-0.5 px-2 m-1 border text-xs rounded-full'>Admin Panel</button>
-        </NavLink>
+  
+            <button
+            onClick={() => window.open(import.meta.env.VITE_ADMIN_URL, '_blank')} 
+            className='py-0.5 px-2 m-1 border text-xs rounded-full'>Admin Panel</button>
+      
     </ul>
     <div className='flex items-center gap-4'>
       {
@@ -83,6 +85,7 @@ const Navbar = () => {
           <NavLink onClick={() => setShowMenu(false)} to="/contact">
             <p className='px-4 py-2 rounded inline-block'>Contact</p>
           </NavLink>
+          <button onClick={() => window.open(import.meta.env.VITE_ADMIN_URL, '_blank')} className='py-0.5 px-2 m-3 border text-xs rounded-full'>Admin Panel</button>
         </ul>
       </div>
     </div>
