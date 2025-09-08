@@ -1,76 +1,131 @@
-# MediHelp Clinic Management System
+# MediHelp — Clinic Management System
 
-**Clinic system for managing patients, appointments, and admin workflows — deployed live and fully operational.**
+Full‑stack clinic and appointment management application with separate patient frontend, admin dashboard, and Node.js/Express API backed by MongoDB.
 
 ## 🌐 Live Demo  
 🔗 [Visit the live site](http://medihelp-clinic.netlify.app/)
 
 ## 📂 Repository Overview  
-This single repository houses three distinct applications:
+This repository contains three apps that work together:
 
-- **frontend/** — The main client-facing React/Vite app (deployed separately).  
-- **admin/** — The administrative dashboard built with React/Vite (this deployment).  
-- **backend/** — The server-side API (Node.js/Express).  
+- `frontend/` — Patient-facing React + Vite application (deployed separately)
+- `admin/` — Administrative dashboard built with React + Vite (this deployment)
+- `backend/` — REST API server (Node.js, Express, Mongoose)
 
-## ✨ Features
+## ✨ Key Features
+
+### Patient App
+- User registration and secure JWT authentication
+- 7‑day appointment slot picker with real-time availability
+- Server‑side slot locking to prevent double bookings
+- Profile management with image uploads (Cloudinary)
+- Appointment booking, viewing, and cancellation
 
 ### Admin Dashboard
-- Secure admin authentication & role-based access  
-- Manage doctors, patients, and appointments  
-- Overview of clinic operations & quick access to records  
-- Real-time availability updates  
+- Secure admin authentication & role-based access
+- Doctor management (add, edit, availability updates)
+- Comprehensive appointment oversight and management
+- Real-time clinic operations monitoring
+- Patient and appointment analytics
 
-### Shared Features
-- Modular folder structure with independent builds for **frontend** and **admin**  
-- Unified repository for seamless development & deployment  
+### Doctor Features
+- Doctor-specific dashboard for appointment management
+- Mark appointments as completed or cancelled
+- View patient details and appointment history
 
-## 🛠️ Technologies Used
-- **Frontend / Admin**: React, Vite, JSX, CSS (extend with Tailwind/other if added)  
-- **Backend**: Node.js, Express, MongoDB (if used)  
-- **Deployment**: Netlify  
+### Technical Features
+- JWT token-based authentication (Authorization: Bearer <token>)
+- Environment‑driven configuration for deployment flexibility
+- Image uploads via Cloudinary integration
+- MongoDB with Mongoose for data persistence
+- CORS-enabled API with proper error handling
 
-## 🚀 Getting Started Locally
+## 🛠️ Tech Stack
+
+**Frontend & Admin:**
+- React 19+ with Vite build tool
+- React Router for navigation
+- Axios for API calls
+- React Toastify for notifications
+- Tailwind CSS for styling
+
+**Backend:**
+- Node.js with Express framework
+- MongoDB with Mongoose ODM
+- JSON Web Tokens (jsonwebtoken) for authentication
+- bcrypt for password hashing
+- Cloudinary SDK for image storage
+- multer for file uploads
+- CORS and validation middleware
+
+**Development & Deployment:**
+- Nodemon for backend development
+- ESLint for code quality
+- Netlify for frontend deployment
+- Environment variables for configuration
+
+## 🚀 Quick Start Guide
 
 ### Prerequisites
-- Node.js & npm installed  
+- Node.js (v16+) and npm installed
+- MongoDB instance (local or Atlas)
+- Cloudinary account for image uploads
 
-### Running the Admin Dashboard
-```bash
-# Navigate into admin folder
-cd admin/
-npm install
-npm run dev
-```
-
-### Building Admin for Production
-```
-cd admin/
-npm install
-npm run build
-# Output will be inside admin/dist/
-```
-### Running Frontend
-```
-cd frontend/
-npm install
-npm run dev
-# or npm run build for production build
-```
 ### Backend Setup
-```
-cd backend/
+```powershell
+cd backend
 npm install
-# Add environment variables if required (e.g., .env for DB connection)
-npm run start
+# Create .env file with required variables (see Environment Variables section)
+npm run server  # Development with nodemon
+# npm start     # Production
 ```
-### 📁 Project Structure
+
+### Frontend (Patient App)
+```powershell
+cd frontend
+npm install
+# Create .env with VITE_BACKEND_URL
+npm run dev     # Development
+# npm run build # Production build
+```
+
+### Admin Dashboard
+```powershell
+cd admin
+npm install
+# Create .env with VITE_BACKEND_URL
+npm run dev     # Development
+# npm run build # Production build
+```
+
+## 📁 Project Structure
 ```
 MediHelp-clinic-management-system/
-├── admin/       # Admin dashboard (React + Vite)
+├── admin/                    # Admin React app (Vite)
 │   ├── src/
-│   ├── dist/    # Production build output
-│   └── ...
-├── frontend/    # Frontend client app
+│   │   ├── components/       # Shared components
+│   │   ├── context/          # React Context providers
+│   │   ├── pages/            # Page components
+│   │   └── assets/           # Static assets
+│   ├── dist/                 # Production build output
+│   └── package.json
+├── frontend/                 # Patient React app (Vite)
+│   ├── src/
+│   │   ├── components/       # Shared components
+│   │   ├── context/          # React Context providers
+│   │   ├── pages/            # Page components
+│   │   └── assets/           # Static assets
+│   └── package.json
+├── backend/                  # Express API server
+│   ├── controllers/          # Route handlers
+│   ├── middlewares/          # Auth and validation
+│   ├── models/               # Mongoose schemas
+│   ├── routes/               # API routes
+│   ├── config/               # Database connection
+│   ├── server.js             # Entry point
+│   └── package.json
+└── README.md
+```
 # MediHelp — Clinic Management System
 
 Full‑stack clinic and appointment management application with separate patient frontend, admin dashboard, and a Node.js/Express API backed by MongoDB.
