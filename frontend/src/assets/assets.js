@@ -12,11 +12,13 @@ import cross_icon from './cross_icon.png'
 import chats_icon from './chats_icon.svg'
 import verified_icon from './verified_icon.svg'
 import arrow_icon from './arrow_icon.svg'
+import right_arrow_icon from './right-arrow.png'
 import info_icon from './info_icon.svg'
 import upload_icon from './upload_icon.png'
 import stripe_logo from './stripe_logo.png'
 import razorpay_logo from './razorpay_logo.png'
 import MediHelpLogo from './MediHelpLogo.png'
+import doc_online from './doc_online.png'
 import doc1 from './doc1.png'
 import doc2 from './doc2.png'
 import doc3 from './doc3.png'
@@ -51,6 +53,7 @@ export const assets = {
     info_icon,
     profile_pic,
     arrow_icon,
+    right_arrow_icon,
     contact_image,
     about_image,
     menu_icon,
@@ -59,7 +62,8 @@ export const assets = {
     upload_icon,
     stripe_logo,
     razorpay_logo,
-    MediHelpLogo
+    MediHelpLogo,
+    doc_online
 }
 
 export const specialityData = [
