@@ -69,7 +69,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={` ${showMenu ? 'fixed w-full' : 'h-0 w-0'} md:hidden right-0 top-0 bottom-0  z-20 overflow-hidden bg-white transition-all duration-300`}>
         <div className='flex items-center justify-between px-5 py-6'>
-          <img className='' src={assets.MediHelpLogo} alt="" />
+          <img className='w-44' src={assets.MediHelpLogo} alt="" />
           <img className='w-7' onClick={() => setShowMenu(false)} src={assets.cross_icon} alt="" />
         </div>
         <ul className='flex flex-col items-center gap-2 mt-5 px-5 text-lg font-medium'>
