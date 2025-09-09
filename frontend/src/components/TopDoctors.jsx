@@ -12,7 +12,7 @@ const TopDoctors = () => {
     <div className='flex flex-col items-center gap-4 my-16 text-gray-800 md:mx-10' id='top-doctors'>
       <h1 className='text-3xl font-medium'>TopDoctors To See</h1>
       <p className='sm:w-1/3 text-sm text-center'>Here are some of the top doctors you can consult</p>
-      <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 pt-5 gap-y-6 px-3 sm:px-0'>
+      <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 pt-5 gap-y-6 px-3 sm:px-0 md:px-5 lg:px-10'>
         {doctors.slice(0, 10).map((doctor, index) => (
           <div onClick={() => navigate(`/appointments/${doctor._id}`)} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500' key={index}>
             <img className='bg-blue-50' src={doctor.image} alt={doctor.name}/>
