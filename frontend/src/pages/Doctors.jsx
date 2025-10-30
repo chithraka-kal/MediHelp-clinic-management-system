@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
+import { LifeLine } from 'react-loading-indicators';
 
 const Doctors = () => {
 
@@ -9,6 +10,7 @@ const Doctors = () => {
   const navigate = useNavigate();
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
+  const isLoading = !doctors || doctors.length === 0;
   const applyFilter = () => {
     if (speciality) {
       setFilteredDoctors(doctors.filter(doc => doc.speciality === speciality));
@@ -34,6 +36,14 @@ const Doctors = () => {
           <p onClick={()=> speciality === 'Neurologist' ? navigate('/doctors') : navigate('/doctors/Neurologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === 'Neurologist' ? "bg-indigo-100 text-black" : ""}`}>Neurologist</p>
           <p onClick={()=> speciality === 'Gastroenterologist' ? navigate('/doctors') : navigate('/doctors/Gastroenterologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === 'Gastroenterologist' ? "bg-indigo-100 text-black" : ""}`}>Gastroenterologist</p>
         </div>
+
+      {/* Loading indicator */}
+      {isLoading ? (
+        <div className="flex justify-center items-center w-full h-64">
+          <LifeLine color="#0ebcc1" text="" textColor="" />
+        </div>
+      ) : (
+        <>
         <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 gap-y-6 px-3 sm:px-0'>
           {
             filteredDoctors.map((doctor, index) => (
@@ -55,6 +65,8 @@ const Doctors = () => {
         ))
           }
         </div>
+</>      )}
+
       </div>
     </div>
   )
